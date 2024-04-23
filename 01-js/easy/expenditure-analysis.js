@@ -52,7 +52,7 @@ function calculateTotalSpentByCategory(transactions) {
   transactions.forEach((transaction)=>{
       //Find if the category already exist in Resultant array
     const existingCategory = Output.find(item=>item.category === transaction.category)
-    console.log(existingCategory)
+  
     if(existingCategory){
       existingCategory.totalSpent += transaction.price 
     }else{
