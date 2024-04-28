@@ -21,24 +21,29 @@ class Todo {
 
   remove(indexOfTodo){
 
-    const todoBeRemoved = this.get(indexOfTodo)
-    if(!todoBeRemoved)return;
-    
-    const filteredTodos = this.todos.filter((todo)=>todo!==todoBeRemoved);
-    this.todos = filteredTodos;
+    if (indexOfTodo < 0 || indexOfTodo >= this.todos.length) {
+      return;
+    }
+    //splice(index,length)
+    this.todos.splice(indexOfTodo, 1);
   }
 
   update(index,updatedTodo){
-    if(index > this.todos.length-1)return;
+    if (index < 0 || index >= this.todos.length) {
+      return;
+    }
     return this.todos[index] = updatedTodo
   }
 
   getAll(){
-    return this.todos
+    return [...this.todos]
   }
 
   get(indexOfTodo){
-    return this.todos[indexOfTodo] ? this.todos[indexOfTodo]:null
+    if (indexOfTodo < 0 || indexOfTodo >= this.todos.length) {
+      return null;
+    }
+    return this.todos[indexOfTodo];
   }
 
   clear(){
